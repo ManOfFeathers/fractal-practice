@@ -1,14 +1,16 @@
 from tkinter import *
+from PIL import ImageGrab
 import math
 
 class Rug:
     object_name = "Square"
     object_num = 0
 
-    def __init__(self, canvas, left, top, width, height,
+    def __init__(self, root, canvas, left, top, width, height,
     grid_color = "white", square_color = "black"):
 
         #attributes from parameters
+        self.root = root
         self.c = canvas
         self.left = left
         self.top = top
@@ -98,4 +100,15 @@ class Rug:
                 queue.append((top+(height/3), bottom-(height/3), left, left+(width/3)))
             self.c.update()
             self.c.after(1000)
+            self.screenshot(self.c, "rug_{}.gif".format(depth))
             depth += 1
+
+    # https://stackoverflow.com/questions/9886274/how-can-i-convert-canvas-content-to-an-image
+    def screenshot(self, widget, filename):
+
+        x = self.root.winfo_rootx() + widget.winfo_x()
+        y = self.root.winfo_rooty() + widget.winfo_y()
+        x1 = x + widget.winfo_width()
+        y1 = y + widget.winfo_height()
+        ImageGrab.grab().crop((x,y,x1,y1)).save(filename)
+            
