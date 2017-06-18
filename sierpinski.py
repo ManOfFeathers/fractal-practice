@@ -1,24 +1,23 @@
-##from graphics import GraphicsImage, GraphicsWindow
-##from color_utils import *
 from tkinter import *
+from PIL import ImageGrab
 import math
-
-SHOULD_DISPLAY_IMAGE = False
 
 class Triangle:
     objectName = "Triangle"     # Object title
     objectNum = 0               # Number of instances created
 
-    def __init__(self, canvas, left, top, width, height, objColor = "black", tremaColor = "white"):
-
+    def __init__(self, root, canvas, left, top, width, height,
+                 obj_color = "black", trema_color = "white"):
+        
         #attributes from parameters
+        self.root = root
         self.c = canvas
         self.left = left
         self.top = top
         self.width = width
         self.height = height
-        self.objColor = objColor
-        self.tremaColor = tremaColor
+        self.obj_color = obj_color
+        self.trema_color = trema_color 
 
         #calculated attributes
         self.tag = Triangle.objectName + str(Triangle.objectNum)
@@ -28,51 +27,65 @@ class Triangle:
         self.center = (self.left + self.right) / 2.0
         self.middle = (self.top + self.bottom) / 2.0
 
+        self.depth = 3
+
+        #self.draw()
+
     def draw(self):
 
-        # X-coordinate guide list
-        xspaces = 500
-        xgridwidth = 1.0 * self.width / xspaces
-        x = []
-        for i in range(xspaces + 1):
-            x.append(self.left + i * xgridwidth)
+        queue = [((self.left,self.bottom), (self.right,self.bottom), (self.center,self.top))]
 
-        # Y-coordinate guide list
-        yspaces = 500
-        ygridwidth = 1.0 * self.height / yspaces
-        y = []
-        for i in range(yspaces + 1):
-            y.append(self.top + i * ygridwidth)
+        depth = 0
 
-        # Triangle guides
-        triangle = (  (x[10],y[490]) , (x[490],y[490]) , (x[250],y[int(490 - ((480 * math.sqrt(3)) / 2))])  )
+        while queue:
+            for i in range(3 ** depth):
 
-        # Trema guides
-        trema = (  (x[10],y[490]) , (x[490],y[490]) , (x[250],y[int(490 - ((480 * math.sqrt(3)) / 2))])  )
+                (left_tup, right_tup, top_tup) = queue.pop(0)
 
-        # Draw triangle
-        self.triangleID = self.c.create_polygon(triangle, fill = self.objColor, tag = self.tag)
+                (left_x, left_y) = left_tup
+                (right_x, right_y) = right_tup
+                (top_x, top_y) = top_tup
 
-        self.c.update()
+                width = right_x - left_x
+                height = (width * math.sqrt(3)) / 2.0 
 
-    def set_properties(self, objColor = "default", tremaColor = "default"):
+                center = (left_x + right_x) / 2.0
 
-        if objColor != "default":
-            self.objColor = objColor
-            self.c.itemconfig(self.objID, fill = self.objColor)
+                bottom = height
+
+                triangle = (    (center,top_y), (right_x,bottom), (left_x,bottom)  )
+
+                trema = (   (left_x+(width/2),bottom-(height/2)),
+                            (right_x-(width/2),bottom-(height/2)),
+                            (width/2, bottom)    )
+
+                self.triangle_id = self.c.create_polygon(triangle, fill = self.obj_color, tag=self.tag)
+
+                self.trema_id = self.c.create_polygon(trema, fill = self.trema_color, tag=self.tag)
+
+                queue.append((
+                            (left_x+(width/2),bottom-(height/2)),
+                            (right_x-(width/2),bottom-(height/2)),
+                            (width/2, bottom)
+                            ))
+
+##                queue.append((top+(height/3), bottom-(height/3), right-(width/3), right))
+##                queue.append((bottom-(height/3), bottom, right-(width/3), right))
+##                queue.append((bottom-(height/3), bottom, left+(width/3), right-(width/3)))
+##                queue.append((bottom-(height/3), bottom, left, left+(width/3)))
+##                queue.append((top+(height/3), bottom-(height/3), left, left+(width/3)))
+
             self.c.update()
-        if tremaColor != "default":
-            self.tremaColor = tremaColor
-            self.c.itemconfig(self.tremaID, fill = self.tremaColor)
-            self.c.update()
+            self.c.after(1000)
+            self.screenshot(self.c, "rug_{}.gif".format(depth))
+            depth += 1
 
-    def shrink(self, delay = 5, xscale = 1.0, yscale = 1.0):
+    # https://stackoverflow.com/questions/9886274/how-can-i-convert-canvas-content-to-an-image
+    def screenshot(self, widget, filename):
 
-        assert self.height == (self.width * math.sqrt(3)) / 2, "Triangle needs to be equilateral."
-
-        self.c.after(delay)
-        self.c.scale(self.tag, self.center, self.middle, xscale, yscale)
-        self.width = self.width / xscale
-        self.height = self.height / yscale
-        self.c.update()
-        
+        x = self.root.winfo_rootx() + widget.winfo_x()
+        y = self.root.winfo_rooty() + widget.winfo_y()
+        x1 = x + widget.winfo_width()
+        y1 = y + widget.winfo_height()
+        ImageGrab.grab().crop((x,y,x1,y1)).save(filename)
+            
