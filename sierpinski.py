@@ -64,9 +64,9 @@ class Triangle:
                 self.trema_id = self.c.create_polygon(trema, fill = self.trema_color, tag=self.tag)
 
                 queue.append((
-                            (left_x+(width/2),bottom-(height/2)),
-                            (right_x-(width/2),bottom-(height/2)),
-                            (width/2, bottom)
+                            (left_x+(width/8),bottom-(height/4)),
+                            (center-(width/8),bottom-(height/4)),
+                            (width/4, bottom)
                             ))
 
 ##                queue.append((top+(height/3), bottom-(height/3), right-(width/3), right))
@@ -77,7 +77,7 @@ class Triangle:
 
             self.c.update()
             self.c.after(1000)
-            self.screenshot(self.c, "rug_{}.gif".format(depth))
+            self.screenshot(self.c, "tri_{}.gif".format(depth))
             depth += 1
 
     # https://stackoverflow.com/questions/9886274/how-can-i-convert-canvas-content-to-an-image
