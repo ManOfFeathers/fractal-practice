@@ -27,7 +27,7 @@ class Rug:
         self.center = (self.left + self.right) / 2.0
         self.middle = (self.top + self.bottom) / 2.0
 
-        self.depth = 3
+        self.depth = 5
 
     def draw(self, top, bottom, left, right, depth = 0):
 
