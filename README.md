@@ -1,4 +1,4 @@
-# fractal=practice
+# fractal-practice
 
 ### These are the rudiments of a collection of fractal images. It will expand as I learn more about them and the functions that create them.
 
