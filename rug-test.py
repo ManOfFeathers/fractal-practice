@@ -7,7 +7,7 @@ height = 729
 
 root = Tk()
 
-c = Canvas(root, width = 728, height = 728, bg = "black")
+c = Canvas(root, width = 727, height = 727, bg = "black")
 c.pack(expand = YES, fill = BOTH)
 
 grid = Rug(root, c, left = 0, top = 0, width = width, height = height,
