@@ -13,6 +13,6 @@
 
 ### This collection of images resulted from a function that prints the big black square in the center, then multiplies exponentially smaller versions of that square by powers of 8. The solid black image indicate that the squares have multiplied so many times as to round out the white background.
 
-![]rug.gif
+![](rug.gif)
 
 ### As with any fractal, the function that draws this is recursive, and won't stop running unless the user manually closes it.
