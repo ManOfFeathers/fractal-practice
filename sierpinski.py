@@ -21,7 +21,7 @@ class Triangle:
     objectNum = 0               # Number of instances created
 
     def __init__(self, root, canvas, left, top, width, height,
-                 obj_color = "black", trema_color = "white"):
+                 tri_color = "black"):
         
         #attributes from parameters
         self.root = root
@@ -30,8 +30,7 @@ class Triangle:
         self.top = top
         self.width = width
         self.height = height
-        self.obj_color = obj_color
-        self.trema_color = trema_color 
+        self.tri_color = tri_color
 
         #calculated attributes
         self.tag = Triangle.objectName + str(Triangle.objectNum)
@@ -41,7 +40,19 @@ class Triangle:
         self.center = (self.left + self.right) / 2.0
         self.middle = (self.top + self.bottom) / 2.0
 
-        #self.depth = 5
+    def draw(self, top, left, right):
+
+        width = right - left
+
+        height = (width * math.sqrt(3)) / 2.0
+
+        center = (self.left + self.right) / 2.0        
+
+        triangle = (    (center,top), (right,height), (left,height)   )
+
+        self.triangle_id = self.c.create_polygon(triangle, fill = self.tri_color, tag=self.tag)
+
+        self.c.update()
         
 
 ##    def draw(self):
@@ -93,29 +104,46 @@ class Triangle:
 ##            self.screenshot(self.c, "tri_{}.gif".format(depth))
 ##            depth += 1
 
-    def draw(self, top, left, right):
+class Trema:
 
-        queue = [(top, left, right)]
+    objectName = "Trema"     # Object title
+    objectNum = 0            # Number of instances created
+    
+    def __init__(self, root, canvas, left, top, width, height,
+                 trema_color = "white"):
+        
+        #attributes from parameters
+        self.root = root
+        self.c = canvas
+        self.left = left
+        self.top = top
+        self.width = width
+        self.height = height
+        self.trema_color = trema_color 
+
+        #calculated attributes
+        self.tag = Trema.objectName + str(Trema.objectNum)
+        Triangle.objectNum += 1
+        self.right = self.left + self.width
+        self.bottom = self.top + self.height
+        self.center = (self.left + self.right) / 2.0
+        self.middle = (self.top + self.bottom) / 2.0
+
+    def draw(self, left, right, bottom):
+
+        queue = [(left, right, bottom)]
         depth = 0
         while queue:
             for i in range(3 ** depth):
-                (top, left, right) = queue.pop(0)
-
+                (left, right, bottom) = queue.pop(0)
                 width = right - left
-
                 height = (width * math.sqrt(3)) / 2.0
-
-                center = (left + right) / 2.0
-
+                center = (self.left + self.right) / 2.0
                 bottom = height
-
-                triangle = (    (center,top), (right,bottom), (left,bottom)   )
 
                 trema = (   (left+(width/4),height/2),
                             (right-(width/4),height/2),
                             (center, bottom)   )
-
-                self.triangle_id = self.c.create_polygon(triangle, fill = self.obj_color, tag=self.tag)
 
                 self.trema_id = self.c.create_polygon(trema, fill = self.trema_color, tag=self.tag)
 
