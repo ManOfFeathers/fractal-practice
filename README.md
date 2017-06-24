@@ -23,8 +23,20 @@
 
 ##### The above images came from a modification made to the draw function that took a screenshot at every new square drawn. That modification produced 32,768 screenshots.
 
+```python
+self.draw(top, top+(height/3), left, left+(width/3), depth+1)
+self.c.update()
+if depth == self.depth - 1:   # check if depth is actual last depth
+  self.screen_count+=1
+  self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
+```
+
+##### rug.py repeats this function eight times, with variables for the coordinates adjusted as needed.
+
+##### After messing around with that method, which sucks up time and hard drive space, Jean and I created the function that draw each layer one at a time. This required a for loop that never stops repeating, which means the user must manually close the program to terminate it.
+
 ![](rug.gif)
 
-##### As with any fractal, the function that draws this is recursive, and won't stop running unless the user manually closes it.
+##### The function for taking screenshots comes from a conversation on stackoverflow:
+##### ![](https://stackoverflow.com/questions/9886274/how-can-i-convert-canvas-content-to-an-image)
 
-![](output/old_rug_32155.gif)
