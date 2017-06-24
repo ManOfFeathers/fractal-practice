@@ -31,9 +31,9 @@ if depth == self.depth - 1:   # check if depth is actual last depth
   self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
 ```
 
-##### rug.py repeats this function eight times, with variables for the coordinates adjusted as needed.
+##### rug.py repeats this function eight times, with variables for the coordinates adjusted as needed. The lines of code that take screenshots can be commented out to avoid creating five to six gigabytes' worth of GIF images.
 
-##### After messing around with that method, which sucks up time and hard drive space, Jean and I created the function that draws each layer one at a time. This required a for loop that never stops repeating, which means the user must manually close the program to terminate it.
+##### After messing around with that method, which sucks up time and hard drive space, [Jean](https://github.com/kobejean) and I created the function that draws each layer one at a time. This required a for loop that never stops repeating, which means the user must manually close the program to terminate it.
 
 ![](rug.gif)
 
