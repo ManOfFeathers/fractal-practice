@@ -28,6 +28,7 @@ class Rug:
         self.middle = (self.top + self.bottom) / 2.0
 
         self.depth = 5
+        self.screen_count = 0
 
     def draw(self, top, bottom, left, right, depth = 0):
 
@@ -52,35 +53,51 @@ class Rug:
         # go crazy
         self.draw(top, top+(height/3), left, left+(width/3), depth+1)
         self.c.update()
-        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        if depth == self.depth - 1: # check if depth is actual last depth
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
 
         self.draw(top, top+(height/3), left+(width/3), right-(width/3), depth+1)
         self.c.update()
-        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        if depth == self.depth - 1: # check if depth is actual last depth
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
         self.draw(top, top+(height/3), right-(width/3), right, depth+1)
         self.c.update()
-        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        if depth == self.depth - 1: # check if depth is actual last depth
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
 
         self.draw(top+(height/3), bottom-(height/3), right-(width/3), right, depth+1)
         self.c.update()
-        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        if depth == self.depth - 1: # check if depth is actual last depth
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
         self.draw(bottom-(height/3), bottom, right-(width/3), right, depth+1)
         self.c.update()
-        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        if depth == self.depth - 1: # check if depth is actual last depth
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
         self.draw(bottom-(height/3), bottom, left+(width/3), right-(width/3), depth+1)
         self.c.update()
-        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        if depth == self.depth - 1: # check if depth is actual last depth
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
         self.draw(bottom-(height/3), bottom, left, left+(width/3), depth+1)
         self.c.update()
-        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        if depth == self.depth - 1: # check if depth is actual last depth
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
         self.draw(top+(height/3), bottom-(height/3), left, left+(width/3), depth+1)
         self.c.update()
-        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        if depth == self.depth - 1: # check if depth is actual last depth
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
     def next_draw(self, top, bottom, left, right):
 
@@ -108,7 +125,7 @@ class Rug:
                 queue.append((top+(height/3), bottom-(height/3), left, left+(width/3)))
             self.c.update()
             self.c.after(1000)
-            self.screenshot(self.c, "rug_{}.gif".format(depth))
+            self.screenshot(self.c, "output/rug_{}.gif".format(depth))
             depth += 1
 
     # https://stackoverflow.com/questions/9886274/how-can-i-convert-canvas-content-to-an-image
