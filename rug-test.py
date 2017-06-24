@@ -1,3 +1,11 @@
+#                 Sierpinski Carpet (AKA rug)
+#
+#  Programmed by Jean Flaherty and Griffin Myers (06-24-2017)
+#
+#  The means of implementing the functions from rug.py in a
+#  TkInter canvas
+#
+
 from rug import Rug
 from tkinter import *
 import math

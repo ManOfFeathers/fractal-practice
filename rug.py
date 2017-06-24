@@ -1,3 +1,17 @@
+#                 Sierpinski Carpet (AKA rug)
+#
+#  Programmed by Jean Flaherty and Griffin Myers (06-24-2017)
+#
+#  A couple of ways to draw the Sierpinski carpet, an image with
+#  an infinitely recursive pattern
+#
+#  Functions:
+#       __init__  -- introduce attributes
+#       draw      -- original fuction that draws each square individually
+#       next_draw -- more intelligent function that draws each layer of
+#                    squares in a for loop
+#
+
 from tkinter import *
 from PIL import ImageGrab
 import math
@@ -53,49 +67,49 @@ class Rug:
         # go crazy
         self.draw(top, top+(height/3), left, left+(width/3), depth+1)
         self.c.update()
-        if depth == self.depth - 1: # check if depth is actual last depth
+        if depth == self.depth - 1:     # check if depth is actual last depth
             self.screen_count+=1
             self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
 
         self.draw(top, top+(height/3), left+(width/3), right-(width/3), depth+1)
         self.c.update()
-        if depth == self.depth - 1: # check if depth is actual last depth
+        if depth == self.depth - 1:     # check if depth is actual last depth
             self.screen_count+=1
             self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
         self.draw(top, top+(height/3), right-(width/3), right, depth+1)
         self.c.update()
-        if depth == self.depth - 1: # check if depth is actual last depth
+        if depth == self.depth - 1:     # check if depth is actual last depth
             self.screen_count+=1
             self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
 
         self.draw(top+(height/3), bottom-(height/3), right-(width/3), right, depth+1)
         self.c.update()
-        if depth == self.depth - 1: # check if depth is actual last depth
+        if depth == self.depth - 1:     # check if depth is actual last depth
             self.screen_count+=1
             self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
         self.draw(bottom-(height/3), bottom, right-(width/3), right, depth+1)
         self.c.update()
-        if depth == self.depth - 1: # check if depth is actual last depth
+        if depth == self.depth - 1:     # check if depth is actual last depth
             self.screen_count+=1
             self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
         self.draw(bottom-(height/3), bottom, left+(width/3), right-(width/3), depth+1)
         self.c.update()
-        if depth == self.depth - 1: # check if depth is actual last depth
+        if depth == self.depth - 1:     # check if depth is actual last depth
             self.screen_count+=1
             self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
         self.draw(bottom-(height/3), bottom, left, left+(width/3), depth+1)
         self.c.update()
-        if depth == self.depth - 1: # check if depth is actual last depth
+        if depth == self.depth - 1:     # check if depth is actual last depth
             self.screen_count+=1
             self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
         self.draw(top+(height/3), bottom-(height/3), left, left+(width/3), depth+1)
         self.c.update()
-        if depth == self.depth - 1: # check if depth is actual last depth
+        if depth == self.depth - 1:     # check if depth is actual last depth
             self.screen_count+=1
             self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
         
