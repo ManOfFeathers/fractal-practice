@@ -37,5 +37,5 @@ if depth == self.depth - 1:   # check if depth is actual last depth
 
 ![](rug.gif)
 
-##### The function for taking screenshots comes from ![a conversation on stackoverflow](https://stackoverflow.com/questions/9886274/how-can-i-convert-canvas-content-to-an-image).
+##### The function for taking screenshots comes from [a conversation on stackoverflow](https://stackoverflow.com/questions/9886274/how-can-i-convert-canvas-content-to-an-image).
 
