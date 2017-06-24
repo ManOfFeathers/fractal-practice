@@ -52,28 +52,36 @@ class Rug:
         # go crazy
         self.draw(top, top+(height/3), left, left+(width/3), depth+1)
         self.c.update()
+        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
 
         self.draw(top, top+(height/3), left+(width/3), right-(width/3), depth+1)
         self.c.update()
-
+        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        
         self.draw(top, top+(height/3), right-(width/3), right, depth+1)
         self.c.update()
+        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
 
         self.draw(top+(height/3), bottom-(height/3), right-(width/3), right, depth+1)
         self.c.update()
-
+        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        
         self.draw(bottom-(height/3), bottom, right-(width/3), right, depth+1)
         self.c.update()
-
+        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        
         self.draw(bottom-(height/3), bottom, left+(width/3), right-(width/3), depth+1)
         self.c.update()
-
+        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        
         self.draw(bottom-(height/3), bottom, left, left+(width/3), depth+1)
         self.c.update()
-
+        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        
         self.draw(top+(height/3), bottom-(height/3), left, left+(width/3), depth+1)
         self.c.update()
-
+        self.screenshot(self.c, "old_rug_{}.gif".format(depth))
+        
     def next_draw(self, top, bottom, left, right):
 
         queue = [(top,bottom,left,right)]
