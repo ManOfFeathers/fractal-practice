@@ -2,7 +2,7 @@
 
 ##### These are the rudiments of a collection of fractal images. It will expand as I learn more about them and the functions that create them.
 
-##### The first of these, and the easiest for me to understand, is the Sierpinski carpet. It recurs as the Sierpinski triangle does, but in a more square-shaped way. I call it "rug".
+##### The first of these, or the easiest for me to understand, is the Sierpinski carpet. It recurs as the Sierpinski triangle does, but in a more square-shaped way. I call it "rug".
 
 ![](output/rug_0.gif)
 ![](output/rug_1.gif)
@@ -11,7 +11,7 @@
 ![](output/rug_4.gif)
 ![](output/rug_5.gif)
 
-##### This collection of images resulted from a function that prints the big black square in the center, then multiplies exponentially smaller versions of that square by powers of 8. The solid black image indicate that the squares have multiplied so many times as to round out the white background.
+##### This collection of images resulted from a function that prints the big black square in the center, then multiplies exponentially smaller versions of that square by powers of 8. The solid black image indicates that the squares have multiplied so many times as to round out the white background.
 
 ##### Before the images displayed layer by layer, the program ran so that each of the eight cells in the layer second from the top would fill with smaller squares before moving to the next cell. The output looked something like this:
 
@@ -33,7 +33,7 @@ if depth == self.depth - 1:   # check if depth is actual last depth
 
 ##### rug.py repeats this function eight times, with variables for the coordinates adjusted as needed.
 
-##### After messing around with that method, which sucks up time and hard drive space, Jean and I created the function that draw each layer one at a time. This required a for loop that never stops repeating, which means the user must manually close the program to terminate it.
+##### After messing around with that method, which sucks up time and hard drive space, Jean and I created the function that draws each layer one at a time. This required a for loop that never stops repeating, which means the user must manually close the program to terminate it.
 
 ![](rug.gif)
 
