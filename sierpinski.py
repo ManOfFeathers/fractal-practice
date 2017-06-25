@@ -21,7 +21,7 @@ class Triangle:
     objectNum = 0               # Number of instances created
 
     def __init__(self, root, canvas, left, top, width, height,
-                 tri_color = "black"):
+                 tri_color = "black", trema_color = "white"):
         
         #attributes from parameters
         self.root = root
@@ -31,6 +31,7 @@ class Triangle:
         self.width = width
         self.height = height
         self.tri_color = tri_color
+        self.trema_color = trema_color
 
         #calculated attributes
         self.tag = Triangle.objectName + str(Triangle.objectNum)
@@ -53,108 +54,61 @@ class Triangle:
         self.triangle_id = self.c.create_polygon(triangle, fill = self.tri_color, tag=self.tag)
 
         self.c.update()
-        
 
-##    def draw(self):
-##
-##        queue = [((self.left,self.bottom), (self.right,self.bottom), (self.center,self.top))]
-##
-##        depth = 0
-##
-##        while queue:
-##            for i in range(3 ** depth):
-##
-##                (left_tup, right_tup, top_tup) = queue.pop(0)
-##
-##                (left_x, left_y) = left_tup
-##                (right_x, right_y) = right_tup
-##                (top_x, top_y) = top_tup
-##
-##                width = right_x - left_x
-##                height = (width * math.sqrt(3)) / 2.0 
-##
-##                center = (left_x + right_x) / 2.0
-##
-##                bottom = height
-##
-##                triangle = (    (center,top_y), (right_x,bottom), (left_x,bottom)  )
-##
-##                trema = (   (left_x+(width/2),bottom-(height/2)),
-##                            (right_x-(width/2),bottom-(height/2)),
-##                            (width/2, bottom)    )
-##
-##                self.triangle_id = self.c.create_polygon(triangle, fill = self.obj_color, tag=self.tag)
-##
-##                self.trema_id = self.c.create_polygon(trema, fill = self.trema_color, tag=self.tag)
-##
-##                queue.append((
-##                            (left_x+(width/8),bottom-(height/4)),
-##                            (center-(width/8),bottom-(height/4)),
-##                            (width/4, bottom)
-##                            ))
-##
-####                queue.append((top+(height/3), bottom-(height/3), right-(width/3), right))
-####                queue.append((bottom-(height/3), bottom, right-(width/3), right))
-####                queue.append((bottom-(height/3), bottom, left+(width/3), right-(width/3)))
-####                queue.append((bottom-(height/3), bottom, left, left+(width/3)))
-####                queue.append((top+(height/3), bottom-(height/3), left, left+(width/3)))
-##
-##            self.c.update()
-##            self.c.after(1000)
-##            self.screenshot(self.c, "tri_{}.gif".format(depth))
-##            depth += 1
+    def draw_trema(self, left, right, top, bottom):
 
-class Trema:
+        width = right - left
 
-    objectName = "Trema"     # Object title
-    objectNum = 0            # Number of instances created
-    
-    def __init__(self, root, canvas, left, top, width, height,
-                 trema_color = "white"):
-        
-        #attributes from parameters
-        self.root = root
-        self.c = canvas
-        self.left = left
-        self.top = top
-        self.width = width
-        self.height = height
-        self.trema_color = trema_color 
+        height = (width * math.sqrt(3)) / 2.0
 
-        #calculated attributes
-        self.tag = Trema.objectName + str(Trema.objectNum)
-        Triangle.objectNum += 1
-        self.right = self.left + self.width
-        self.bottom = self.top + self.height
-        self.center = (self.left + self.right) / 2.0
-        self.middle = (self.top + self.bottom) / 2.0
+        center = (left + right) / 2.0
 
-    def draw(self, left, right, bottom):
+        trema = (   (left+(width/4),height/2),
+                    (right-(width/4),height/2),
+                    (center,height)   )
 
-        queue = [(left, right, bottom)]
+        queue = [trema]
         depth = 0
         while queue:
             for i in range(3 ** depth):
-                (left, right, bottom) = queue.pop(0)
-                width = right - left
-                height = (width * math.sqrt(3)) / 2.0
-                center = (self.left + self.right) / 2.0
-                bottom = height
+                (left_tup, right_tup, bottom_tup) = queue.pop(0)
 
-                trema = (   (left+(width/4),height/2),
-                            (right-(width/4),height/2),
-                            (center, bottom)   )
+                (left_x, left_y) = left_tup
+                (right_x, right_y) = right_tup
+                (bottom_x, bottom_y) = bottom_tup
+
+                width = right_x - left_x
+
+                height = (width * math.sqrt(3)) / 2.0
+
+                center = (left_x + right_x) / 2.0
+
+                trema = (   (left_x, left_y),
+                            (right_x, right_y),
+                            (bottom_x, bottom_y)   )
 
                 self.trema_id = self.c.create_polygon(trema, fill = self.trema_color, tag=self.tag)
 
                 queue.append((
-                            (left+(width/2),bottom-(height/2)),
-                            (center-(width/2),bottom-(height/2)),
-                            (width/2, bottom)
+                            (left_x-(width/4),bottom_y-(height/2)),
+                            (left_x+(width/4),bottom_y-(height/2)),
+                            (left_x,bottom_y)
                             ))
-                
+
+                queue.append((
+                            (bottom_x-(width/4),left_y-(height/2)),
+                            (bottom_x+(width/4),right_y-(height/2)),
+                            (bottom_x,left_y)
+                            ))
+
+                queue.append((
+                            (right_x-(width/4),bottom_y-(height/2)),
+                            (right_x+(width/4),bottom_y-(height/2)),
+                            (right_x,bottom_y)
+                            ))
+               
             self.c.update()
-            self.c.after(1000)
+            self.c.after(2000)
             self.screenshot(self.c, "tri_{}.gif".format(depth))
             depth += 1
                 

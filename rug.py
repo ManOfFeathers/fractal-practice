@@ -129,14 +129,23 @@ class Rug:
 
                 self.grid_id = self.c.create_rectangle(grid, fill = self.grid_color, tag=self.tag)
                 self.square_id = self.c.create_rectangle(square, fill = self.square_color, tag=self.tag)
+
                 queue.append((top, top+(height/3), left, left+(width/3)))
+
                 queue.append((top, top+(height/3), left+(width/3), right-(width/3)))
+
                 queue.append((top, top+(height/3), right-(width/3), right))
+
                 queue.append((top+(height/3), bottom-(height/3), right-(width/3), right))
+
                 queue.append((bottom-(height/3), bottom, right-(width/3), right))
+
                 queue.append((bottom-(height/3), bottom, left+(width/3), right-(width/3)))
+
                 queue.append((bottom-(height/3), bottom, left, left+(width/3)))
+
                 queue.append((top+(height/3), bottom-(height/3), left, left+(width/3)))
+
             self.c.update()
             self.c.after(1000)
             self.screenshot(self.c, "output/rug_{}.gif".format(depth))
