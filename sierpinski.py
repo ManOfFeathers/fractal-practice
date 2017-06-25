@@ -109,7 +109,7 @@ class Triangle:
                
             self.c.update()
             self.c.after(2000)
-            self.screenshot(self.c, "tri_{}.gif".format(depth))
+            self.screenshot(self.c, "output/tri_{}.gif".format(depth))
             depth += 1
                 
 
