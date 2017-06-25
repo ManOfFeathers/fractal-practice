@@ -4,14 +4,9 @@
 
 ##### The first of these, or the easiest for me to understand, is the Sierpinski carpet. It recurs as the Sierpinski triangle does, but in a more square-shaped way. I call it "rug".
 
-![](output/rug_0.gif)
-![](output/rug_1.gif)
-![](output/rug_2.gif)
-![](output/rug_3.gif)
-![](output/rug_4.gif)
-![](output/rug_5.gif)
+![](rug.gif)
 
-##### This collection of images resulted from a function that prints the big black square in the center, then multiplies exponentially smaller versions of that square by powers of 8. The solid black image indicates that the squares have multiplied so many times as to round out the white background.
+##### This animation is the result of a function that prints the big black square in the center, then creates exponentially smaller versions of that square, multiplied by powers of 8. The solid black image indicates that the squares have multiplied so many times as to round out the white background.
 
 ##### Before the images displayed layer by layer, the program ran so that each of the eight cells in the layer second from the top would fill with smaller squares before moving to the next cell. The output looked something like this:
 
@@ -35,7 +30,12 @@ if depth == self.depth - 1:   # check if depth is actual last depth
 
 ##### After messing around with that method, which sucks up time and hard drive space, [Jean](https://github.com/kobejean) and I created the function that draws each layer one at a time. This required a for loop that never stops repeating, which means the user must manually close the program to terminate it.
 
-![](rug.gif)
+##### Another example of this sort of recursion is the Sierpinski triangle.
+
+![](output/tri_0.gif)
+![](output/tri_1.gif)
+![](output/tri_2.gif)
+![](output/tri_3.gif)
 
 ##### The function for taking screenshots comes from [a conversation on stackoverflow](https://stackoverflow.com/questions/9886274/how-can-i-convert-canvas-content-to-an-image).
 
