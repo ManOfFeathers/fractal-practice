@@ -32,10 +32,7 @@ if depth == self.depth - 1:   # check if depth is actual last depth
 
 ##### Another example of this sort of recursion is the Sierpinski triangle.
 
-![](output/tri_0.gif)
-![](output/tri_1.gif)
-![](output/tri_2.gif)
-![](output/tri_3.gif)
+![](output/animatetri.gif)
 
 ##### The function for taking screenshots comes from [a conversation on stackoverflow](https://stackoverflow.com/questions/9886274/how-can-i-convert-canvas-content-to-an-image).
 
