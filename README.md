@@ -36,3 +36,8 @@ if depth == self.depth - 1:   # check if depth is actual last depth
 
 ##### The function for taking screenshots comes from [a conversation on stackoverflow](https://stackoverflow.com/questions/9886274/how-can-i-convert-canvas-content-to-an-image).
 
+### Update 7/8/2017: The Cantor set
+
+![](output/cantor.png)
+
+##### Here's another image produced by recursive math, this time a series of lines that never stop dividing themselves. The output isn't perfect, as the pixels being drawn round out due to the canvas size, but it sort of demonstrates the function's basic behavior
