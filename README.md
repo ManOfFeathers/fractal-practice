@@ -40,4 +40,4 @@ if depth == self.depth - 1:   # check if depth is actual last depth
 
 ![](output/cantor.png)
 
-##### Here's another image produced by recursive math, this time a series of lines that never stop dividing themselves. The output isn't perfect, as the pixels being drawn round out due to the canvas size, but it sort of demonstrates the function's basic behavior
+##### Here's another image produced by recursive math, this time a series of lines that never stop dividing themselves. The output isn't perfect, as the pixels being drawn round out due to the small canvas, but it sort of demonstrates the function's basic behavior.
