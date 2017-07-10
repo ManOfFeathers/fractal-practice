@@ -80,6 +80,6 @@
 
 ### Update 7/8/2017: The Cantor set
 
-![](output/cantor.png)
+![](output/cantor_1018.gif)
 
 ##### Here's another image produced by recursive math, this time a series of lines that never stop dividing themselves. The output isn't perfect, as the pixels being drawn round out due to the small canvas, but it sort of demonstrates the function's basic behavior.
