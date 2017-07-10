@@ -26,7 +26,7 @@ def cantor(max_i, x_start, x_end, y):
             (x_end,y)]]
     mat_r = x_end - x_start 
 
-    depth = 0
+##    depth = 0     #varialbe needed for producing screenshots (I think)
     while queue:
         coord = queue.pop(0)
         c.create_line(coord[0][0],coord[0][1], coord[1][0],coord[1][1], width = 2, fill = "black")
@@ -37,9 +37,9 @@ def cantor(max_i, x_start, x_end, y):
         queue.append(coord1)
         queue.append(coord2)
         c.update()
-##        c.after(1000)
-        screenshot(c, "cantor_{}.gif".format(depth))
-        depth += 1
+        c.after(1000)
+##        screenshot(c, "cantor_{}.gif".format(depth))
+##        depth += 1
 
 # https://stackoverflow.com/questions/9886274/how-can-i-convert-canvas-content-to-an-image
 def screenshot(widget, filename):
