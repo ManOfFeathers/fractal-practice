@@ -19,11 +19,53 @@
 ##### The above images came from a modification made to the draw function that took a screenshot at every new square drawn. That modification produced 32,768 screenshots.
 
 ```python
-self.draw(top, top+(height/3), left, left+(width/3), depth+1)
-self.c.update()
-if depth == self.depth - 1:   # check if depth is actual last depth
-  self.screen_count+=1
-  self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
+        self.draw(top, top+(height/3), left, left+(width/3), depth+1)
+        self.c.update()
+        if depth == self.depth - 1:     # check if depth is actual last depth
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
+
+        self.draw(top, top+(height/3), left+(width/3), right-(width/3), depth+1)
+        self.c.update()
+        if depth == self.depth - 1:
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
+
+        self.draw(top, top+(height/3), right-(width/3), right, depth+1)
+        self.c.update()
+        if depth == self.depth - 1:
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
+
+        self.draw(top+(height/3), bottom-(height/3), right-(width/3), right, depth+1)
+        self.c.update()
+        if depth == self.depth - 1:
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
+
+        self.draw(bottom-(height/3), bottom, right-(width/3), right, depth+1)
+        self.c.update()
+        if depth == self.depth - 1:
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
+
+        self.draw(bottom-(height/3), bottom, left+(width/3), right-(width/3), depth+1)
+        self.c.update()
+        if depth == self.depth - 1:
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
+
+        self.draw(bottom-(height/3), bottom, left, left+(width/3), depth+1)
+        self.c.update()
+        if depth == self.depth - 1:
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
+
+        self.draw(top+(height/3), bottom-(height/3), left, left+(width/3), depth+1)
+        self.c.update()
+        if depth == self.depth - 1:
+            self.screen_count+=1
+            self.screenshot(self.c, "output/old_rug_{}.gif".format(self.screen_count))
 ```
 
 ##### rug.py repeats this function eight times, with variables for the coordinates adjusted as needed. The lines of code that take screenshots can be commented out to avoid creating five to six gigabytes' worth of GIF images.
