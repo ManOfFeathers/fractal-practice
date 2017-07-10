@@ -1,7 +1,10 @@
+#  Cantor Set
+# 
+#  Programmed by Griffin Myers
+#  7/8/2017
 #
-# cantor.py
-# Programmed by Griffin Myers
-# 7/8/2017
+#  Functions:
+#       cantor    -- infinitely draws lines with coordinates based on tuple variables
 #
 
 import numpy as np
@@ -12,7 +15,7 @@ root = Tk()
 width = 600
 height = 600
 
-c = Canvas(root, width = width, height = height)
+c = Canvas(root, width = width, height = height, bg = "white")
 c.pack()
 
 # make a few good points
@@ -30,6 +33,9 @@ def cantor(max_i, x_start, x_end, y):
         coord1 = [(coord[0][0],coord[0][1] + 10),(coord[0][0] + (r / 3),coord[1][1] + 10)]
         coord2 = [(coord[1][0] - (r / 3),coord[0][1] + 10),(coord[1][0], coord[1][1] + 10)]
         queue.append(coord1)
-        queue.append(coord2)             
+        queue.append(coord2)
+        c.update()
+        c.after(1000)
 
-cantor(4, 0, width, 2)
+cantor(4, 0, width, 6)  # call the function without the old tester code
+c.update()
