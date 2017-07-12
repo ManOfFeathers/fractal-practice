@@ -82,4 +82,8 @@
 
 ![](output/cantor_1018.gif)
 
-##### Here's another image produced by recursive math, this time a series of lines that never stop dividing themselves. The output isn't perfect, as the pixels being drawn round out due to the small canvas, but it sort of demonstrates the function's basic behavior.
+##### Here's another image produced by recursive math, this time a series of lines that never stop dividing themselves by 3. The output isn't perfect, as the pixels being drawn round out due to the small canvas, but it sort of demonstrates the function's basic behavior.
+
+### Update 7/11/2017: Removed tester programs
+
+##### Older versions of this project had testers, separate programs that existed solely to run each function. I went ahead and deleted those, replacing each with a couple of lines per program that have a function call itself. The testers seemed unnecessary given the ability to define a function and call it in the same file.
