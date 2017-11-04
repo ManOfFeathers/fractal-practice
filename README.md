@@ -1,12 +1,12 @@
 # fractal-practice
 
-![](rug.gif)
-
 ![](supplemental/old_rug_4096.gif)
 ![](supplemental/old_rug_12288.gif)
 ![](supplemental/old_rug_20480.gif)
 ![](supplemental/old_rug_28672.gif)
 ![](supplemental/old_rug_32768.gif)
+
+![](rug.gif)
 
 ![](supplemental/animatetri.gif)
 
